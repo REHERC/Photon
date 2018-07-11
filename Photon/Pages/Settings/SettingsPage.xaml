@@ -5,14 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Photon"
              mc:Ignorable="d" 
-             d:DesignHeight="480" d:DesignWidth="640">
+             d:DesignHeight="480" d:DesignWidth="640" Loaded="Page_Loaded">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="32px" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Background="Teal">
-            <TextBlock TextWrapping="Wrap" Text="Settings" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
+            <TextBlock TextWrapping="Wrap" Text="Settings (Double-Click on a value to modify it)" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
         </DockPanel>
+        <Grid Grid.Row="1" x:Name="SettingsGrid" Margin="8" Background="#4b7f7f7f">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Spectrum path:" TextAlignment="Right" Margin="16,0,16,0" FontWeight="Bold" Foreground="#FF404040" FontSize="24" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" x:Name="SpectrumPath" FontSize="24" FontFamily="Segoe UI" FontWeight="Bold" Cursor="Hand"/>
+        </Grid>
     </Grid>
 </UserControl>

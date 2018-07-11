@@ -14,13 +14,9 @@
         <DockPanel Grid.Row="0" Background="Teal">
             <TextBlock TextWrapping="Wrap" Text="Manage plugins" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
         </DockPanel>
-        <CheckBox x:Name="checkBox" Content="Enable Spectrum Extension System" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" FontSize="16"/>
-        <GroupBox x:Name="groupBox" Header="ENABLE PLUGINS:" Margin="10,36,10,10" Grid.Row="1">
-            <ListBox x:Name="Plugins">
-                <CheckBox/>
-                <CheckBox/>
-                <CheckBox/>
-            </ListBox>
+        <CheckBox x:Name="EnableSpectrum" Content="Enable Spectrum Extension System" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" FontSize="16"/>
+        <GroupBox x:Name="groupBox" Header="SELECT PLUGINS:" Margin="10,36,10,10" Grid.Row="1">
+            <StackPanel x:Name="Plugins"/>
         </GroupBox>
 
 

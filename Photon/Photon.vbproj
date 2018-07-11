@@ -118,6 +118,8 @@
     </Compile>
     <Compile Include="Modules\AppSettings.vb" />
     <Compile Include="Modules\Globals.vb" />
+    <Compile Include="Modules\ManagerSettings.vb" />
+    <Compile Include="Modules\PluginManifest.vb" />
     <Compile Include="Modules\Settings.vb" />
     <Compile Include="Pages\Error\ErrorPage.xaml.vb">
       <DependentUpon>ErrorPage.xaml</DependentUpon>

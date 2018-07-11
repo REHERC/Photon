@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Photon"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" x:Class="MainWindow"
         mc:Ignorable="d"
-        Title="Photon" Height="319.682" Width="640" WindowStartupLocation="CenterScreen" Controls:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" Loaded="Window_Loaded" WindowState="Maximized">
+        Title="Photon - Toolbox for Distance" MinHeight="325" Height="325" MinWidth="925" Width="925" WindowStartupLocation="CenterScreen" Controls:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" Loaded="Window_Loaded" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="128px" />

@@ -1,4 +1,4 @@
 ﻿Public Class AppSettings
-    Public SpectrumPath As String
+    Public Property SpectrumPath As String = "Path not set."
 
 End Class
