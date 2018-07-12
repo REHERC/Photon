@@ -25,7 +25,8 @@ Public Class ManagePluginsPage
                 Dim MANIFEST As PluginManifest = JsonConvert.DeserializeObject(Of PluginManifest)(File.ReadAllText(MANIFEST_FILE))
                 Dim BOX As New CheckBox
                 BOX.Content = MANIFEST.FriendlyName
-                BOX.IsChecked = MANIFEST.SkipLoad
+                BOX.IsChecked = Not MANIFEST.SkipLoad
+
                 BOX.Foreground = New SolidColorBrush(Colors.Black)
                 BOX.FontSize = EnableSpectrum.FontSize
                 BOX.FontFamily = EnableSpectrum.FontFamily
@@ -46,7 +47,12 @@ Public Class ManagePluginsPage
 
     Private Sub BOX_CheckedChanged(sender As Object, e As RoutedEventArgs)
         With CType(sender, CheckBox)
-            MsgBox(CStr(.Tag))
+            ' Update Manifest to checkbox state
+            Dim FOLDER As String = Settings.DATA.SpectrumPath & "\Plugins\" & CStr(.Tag)
+            Dim MANIFEST As PluginManifest = JsonConvert.DeserializeObject(Of PluginManifest)(File.ReadAllText(FOLDER & "\plugin.json"))
+            MANIFEST.SkipLoad = Not .IsChecked
+            File.WriteAllText(FOLDER & "\plugin.json", JsonConvert.SerializeObject(MANIFEST))
+
         End With
     End Sub
 
