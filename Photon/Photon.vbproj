@@ -107,6 +107,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LoadPage\LoadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Manage Plugins\ManagePluginsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +145,9 @@
     </Compile>
     <Compile Include="Pages\Home\HomePage.xaml.vb">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoadPage\LoadPage.xaml.vb">
+      <DependentUpon>LoadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Manage Plugins\ManagePluginsPage.xaml.vb">
       <DependentUpon>ManagePluginsPage.xaml</DependentUpon>
@@ -217,6 +224,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Images\Background_ErrorPage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Images\Background_LoadingPage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -1,4 +1,10 @@
 ﻿Class MainWindow
+    Public Sub New()
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+    End Sub
+
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
         Globals.MainWindow = Me
         Settings.Initialize()
@@ -25,5 +31,13 @@
     Public Sub SetPage(Page As UserControl)
         PageContent.Children.Clear()
         PageContent.Children.Add(Page)
+    End Sub
+
+    Public Sub AddPage(Page As UserControl)
+        PageContent.Children.Add(Page)
+    End Sub
+
+    Public Sub RemovePage(Page As UserControl)
+        PageContent.Children.Remove(Page)
     End Sub
 End Class

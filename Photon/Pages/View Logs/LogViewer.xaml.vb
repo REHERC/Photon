@@ -1,14 +1,35 @@
 ﻿Imports System.IO
+Imports System.Windows.Threading
 
 Public Class LogViewer
+    Private Log As String
+    Private Title As String
+    Private Loader As LoadPage
+
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
     End Sub
 
-    Public Sub New(Log As String, Title As String)
+    Public Sub New(Log As String, Title As String, Optional Initialize As Boolean = True)
         InitializeComponent()
+        Me.Log = Log
+        Me.Title = Title
+        If Initialize Then
+            Init()
+        End If
+    End Sub
+
+    Public Sub Init()
+        Loader = New LoadPage("LOADING, PLEASE WAIT...", "Loading log file:" & vbCrLf & Log, "...")
+        Globals.MainWindow.SetPage(Loader)
+        ProcessUITasks()
+        InitTask()
+        Globals.MainWindow.SetPage(Me)
+    End Sub
+
+    Private Sub InitTask()
         Me.Header.Text = Log & " | " & Title
 
         Dim DATA As String = File.ReadAllText(Log)
@@ -55,10 +76,21 @@ Public Class LogViewer
             End Using
         Catch SWOOSHYBOI As Exception
             Globals.MainWindow.SetPage(New ErrorPage("OOPS !", "An error occured while opening the file, it will be opened with the default program associated to it ...", "Error | View Log"))
+        Finally
+
         End Try
     End Sub
 
     Private Sub Back_MouseUp(sender As Object, e As MouseButtonEventArgs) Handles Back.MouseUp
         Globals.MainWindow.SetPage(New ViewLogsPage())
+    End Sub
+
+    Public Shared Sub ProcessUITasks()
+        Dim frame As DispatcherFrame = New DispatcherFrame()
+        Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, New DispatcherOperationCallback(Function(ByVal parameter As Object)
+                                                                                                                    frame.[Continue] = False
+                                                                                                                    Return Nothing
+                                                                                                                End Function), Nothing)
+        Dispatcher.PushFrame(frame)
     End Sub
 End Class
