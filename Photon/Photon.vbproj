@@ -104,6 +104,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\View Logs\LogViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\View Logs\ViewLogsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +136,9 @@
     </Compile>
     <Compile Include="Pages\Settings\SettingsPage.xaml.vb">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\View Logs\LogViewer.xaml.vb">
+      <DependentUpon>LogViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\View Logs\ViewLogsPage.xaml.vb">
       <DependentUpon>ViewLogsPage.xaml</DependentUpon>

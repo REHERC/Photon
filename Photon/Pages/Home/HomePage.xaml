@@ -20,9 +20,6 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="../../Data/Images/Background_HomePage.png" Stretch="UniformToFill"/>
                     </Grid.Background>
-                    <Grid.Effect>
-                        <BlurEffect Radius="5"/>
-                    </Grid.Effect>
                 </Grid>
                 <Grid Background="#A0A0A0A0" Margin="48">
                     <Grid.RowDefinitions>
