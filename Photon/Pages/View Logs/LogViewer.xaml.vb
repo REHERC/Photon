@@ -32,6 +32,7 @@ Public Class LogViewer
                         .TextWrapping = TextWrapping.Wrap,
                         .FontSize = 16,
                         .FontWeight = FontWeights.Bold,
+                        .FontFamily = New FontFamily("file:///C:/Windows/Fonts/consola.ttf"),
                         .Background = New SolidColorBrush(Colors.Black),
                         .Foreground = New SolidColorBrush(Colors.White)
                     }
@@ -54,12 +55,6 @@ Public Class LogViewer
             End Using
         Catch SWOOSHYBOI As Exception
             Globals.MainWindow.SetPage(New ErrorPage("OOPS !", "An error occured while opening the file, it will be opened with the default program associated to it ...", "Error | View Log"))
-            Dim Process As New System.Diagnostics.Process
-            Dim info As New System.Diagnostics.ProcessStartInfo(Log)
-            info.UseShellExecute = True
-            info.WindowStyle = ProcessWindowStyle.Normal
-            process.StartInfo = info
-            process.Start()
         End Try
     End Sub
 End Class
