@@ -13,9 +13,17 @@
                 <RowDefinition Height="32px" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <DockPanel Grid.Row="0" Background="Teal">
-                <TextBlock x:Name="Header" TextWrapping="Wrap" Text="Log Viewer" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
-            </DockPanel>
+            <Grid Grid.Row="0" Background="Teal">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="128px"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Grid.Column="0">
+                    <ListBoxItem Content="GO BACK" x:Name="Back" FontWeight="Bold" FontSize="16" Height="32" Background="#FF00A0A0" Cursor="Hand" />
+                </ListBox>
+                <TextBlock Grid.Column="2" x:Name="Header" TextWrapping="Wrap" Text="Log Viewer" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
+            </Grid>
             <Grid x:Name="Container" Grid.Row="1" Background="Black">
                 <Grid x:Name="PageContent" Background="White">
                     <ScrollViewer mah:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True">

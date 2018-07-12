@@ -57,4 +57,8 @@ Public Class LogViewer
             Globals.MainWindow.SetPage(New ErrorPage("OOPS !", "An error occured while opening the file, it will be opened with the default program associated to it ...", "Error | View Log"))
         End Try
     End Sub
+
+    Private Sub Back_MouseUp(sender As Object, e As MouseButtonEventArgs) Handles Back.MouseUp
+        Globals.MainWindow.SetPage(New ViewLogsPage())
+    End Sub
 End Class
