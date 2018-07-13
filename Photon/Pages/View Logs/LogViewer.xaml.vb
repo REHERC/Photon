@@ -22,7 +22,7 @@ Public Class LogViewer
     End Sub
 
     Public Sub Init()
-        Loader = New LoadPage("LOADING, PLEASE WAIT...", "Loading log file:" & vbCrLf & Log, "...")
+        Loader = New LoadPage("LOADING, PLEASE WAIT...", "Loading log file:" & vbCrLf & Log & vbCrLf & vbCrLf & "The application might become unresponsive while it reads the file." & vbCrLf & "Warning: if you open a big file, don't resize the window ! (it could freeze the app for some time.)", "...")
         Globals.MainWindow.SetPage(Loader)
         ProcessUITasks()
         InitTask()
@@ -53,24 +53,33 @@ Public Class LogViewer
                         .TextWrapping = TextWrapping.Wrap,
                         .FontSize = 16,
                         .FontWeight = FontWeights.Bold,
-                        .FontFamily = New FontFamily("file:///C:/Windows/Fonts/consola.ttf"),
+                        .FontFamily = New FontFamily("Consolas"),
                         .Background = New SolidColorBrush(Colors.Black),
                         .Foreground = New SolidColorBrush(Colors.White)
                     }
 
-                    If LINE_TEXT(1) = "i" Then
-                        LINE_BLOCK.Background = New SolidColorBrush(Colors.Black)
-                        LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                    If LINE_TEXT.Length > 2 AndAlso LINE_TEXT Like "[[]*[]][[]*#/*#/#### *#:*#:*# ??[]]*" Then
+                        Select Case LINE_TEXT(1)
+                            Case "i"c
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.Black)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                            Case "*"c
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.Goldenrod)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                            Case "!"c
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.Firebrick)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                            Case "e"c
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.MediumVioletRed)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                            Case "+"c
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.Olive)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                            Case Else
+                                LINE_BLOCK.Background = New SolidColorBrush(Colors.CadetBlue)
+                                LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
+                        End Select
                     End If
-                    If LINE_TEXT(1) = "*" Then
-                        LINE_BLOCK.Background = New SolidColorBrush(Colors.Goldenrod)
-                        LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
-                    End If
-                    If LINE_TEXT(1) = "!" Then
-                        LINE_BLOCK.Background = New SolidColorBrush(Colors.Firebrick)
-                        LINE_BLOCK.Foreground = New SolidColorBrush(Colors.White)
-                    End If
-
                     Output.Children.Add(LINE_BLOCK)
                 Loop
             End Using
